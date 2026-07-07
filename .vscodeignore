@@ -1,0 +1,11 @@
+**/.git/**
+**/.gitignore
+**/*.map
+**/*.ts
+**/tsconfig.json
+**/node_modules/**
+**/out/test/**
+**/test/**
+**/.vscode-test/**
+.github/**
+CONTRIBUTING.md
