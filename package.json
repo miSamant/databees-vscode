@@ -1,0 +1,114 @@
+{
+  "name": "databees",
+  "displayName": "DataBees - Database Client",
+  "description": "Premium VSCode database client with unlimited connections, cloud support, and secure query execution",
+  "version": "0.1.0",
+  "publisher": "misamant",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Data & Analytics",
+    "Databases"
+  ],
+  "keywords": [
+    "database",
+    "mysql",
+    "postgresql",
+    "mongodb",
+    "sql",
+    "query",
+    "client",
+    "cloud"
+  ],
+  "icon": "assets/databees-icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/miSamant/databees-vscode.git"
+  },
+  "main": "./dist/extension.js",
+  "activation": [
+    "onCommand:databees.openPanel",
+    "onCommand:databees.newConnection"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "databees.openPanel",
+        "title": "DataBees: Open Database Client"
+      },
+      {
+        "command": "databees.newConnection",
+        "title": "DataBees: New Connection"
+      },
+      {
+        "command": "databees.executeQuery",
+        "title": "DataBees: Execute Query"
+      },
+      {
+        "command": "databees.exportResults",
+        "title": "DataBees: Export Results"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "databees-container",
+          "title": "DataBees",
+          "icon": "assets/databees-activity.svg"
+        }
+      ]
+    },
+    "views": {
+      "databees-container": [
+        {
+          "id": "databees-connections",
+          "name": "Connections"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "DataBees",
+      "properties": {
+        "databees.licenseKey": {
+          "type": "string",
+          "description": "Your DataBees license key"
+        },
+        "databees.encryptionEnabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable encryption for stored credentials"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vsce:publish": "vsce publish",
+    "vsce:package": "vsce package",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.80.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.45.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "mysql2": "^3.6.0",
+    "pg": "^8.11.0",
+    "mongodb": "^6.0.0",
+    "sqlite3": "^5.1.6",
+    "mssql": "^10.0.0",
+    "stripe": "^14.0.0",
+    "xlsx": "^0.18.5",
+    "json2csv": "^6.0.0",
+    "simple-git": "^3.20.0",
+    "uuid": "^9.0.0"
+  }
+}
